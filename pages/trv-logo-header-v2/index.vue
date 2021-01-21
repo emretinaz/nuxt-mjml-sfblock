@@ -66,10 +66,9 @@
 <script>
 // const BlockSDK = require('blocksdk');
 import BlockSDK from "blocksdk";
-const sdk = new BlockSDK(
-  ["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"],
-  true
-);
+if (typeof(window) !== 'undefined') {
+ const sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+}
 export default {
   // template: `
   //     <mjml>
