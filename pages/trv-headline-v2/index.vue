@@ -1,18 +1,101 @@
 <template>
-  <div class="container">
-    <div>
-      <h2>trv-headline-v2</h2>
-      <br> <br>
-      <nuxt-link to="/"><button>Home</button></nuxt-link>
-    </div>
-  </div>
+    <div id="workspace" class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2>
+                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="[object Object]">
+                            <span class="slds-text-heading_small">headline</span>
+                        </a>
+                    </h2>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="text-input-id-1">headline text</label>
+                <div class="slds-form-element__control">
+                    <input id="text-input-id-1" type="text" ref="text" class="slds-input" v-model="textInput" @change="getContent" @input="getContent" value="" placeholder="Find your ideal hotel" />
+                </div>
+            </div>
+        </div>
+    </div>   
 </template>
-
 <script>
-export default {
+import BlockSDK from "blocksdk";
 
+export default {
+    data() {
+        return {
+            content: '',
+            textInput: 'Find your ideal hotel'
+        }
+    },
+    methods: {
+        generateContent() {
+            var style = '<style type="text/css">\
+            /* Global Rules */\
+            td.font20 { font-size: 20px !important; line-height: 100% !important; }\
+            td.minheight, div.minheight { font-size: 1px !important; line-height: 1px !important; mso-line-height-rule: exactly; }\
+            td.font24-elh { font-size: 24px !important; line-height: 30px !important; mso-line-height-rule: exactly; }\
+            /* Mobile Rules */\
+            @media only screen and (max-width:480px) {\
+            body, .bg { background: #ffffff !important; }\
+            .resimg { width: 100% !important; min-width: 100% !important; height: auto !important; }\
+            .mobfullw { width: 100% !important; min-width: 0 !important; }\
+            .searchbar { padding-left: 16px !important; padding-top: 16px !important; padding-right: 16px !important; padding-bottom: 16px !important; }\
+            }\
+            </style>';
+            var bodycontent = '<!-- Begin headline -->\
+            <table border="0" cellpadding="0" cellspacing="0" width="700" align="center" class="mobfullw" style="margin: 0 0 0 0;min-width: 300px;border-collapse: collapse;font-family: arial, sans-serif;">\
+                <tbody><tr>\
+                <td align="center" style="padding-top: 24px; color: #37454d;font-size: 16px !important;line-height: 115% !important;">\
+                    <table border="0" cellpadding="0" cellspacing="0" width="588" align="center" class="mobfullw" style="margin: 0 0 0 0;min-width: 300px;border-collapse: collapse;font-family: arial, sans-serif;">\
+                    <tbody><tr>\
+                        <td width="100%" class="minheight" style="padding: 0 16px 0 16px;color: #37454d;mso-line-height-rule: exactly;font-size: 1px !important;line-height: 1px !important;">\
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" class="mobfullw" style="margin: 0px; min-width: 300px; border-collapse: collapse; font-family: arial, sans-serif;">\
+                            <tbody><tr>\
+                            <td class="font24-elh" align="left" style="padding: 0 0 16px 0;color: #37454d;font-size: 24px !important; line-height: 30px !important; mso-line-height-rule:exactly;">\
+                                <b class="trv_amppreview">'+this.textInput+'</b>\
+                            </td>\
+                            </tr>\
+                        </tbody></table>\
+                        </td>\
+                    </tr>\
+                    </tbody></table>\
+                </td>\
+                </tr>\
+            </tbody></table>\
+            <!-- End headline -->';
+            this.content = style.concat(bodycontent)
+            return this.content;
+        },
+        getContent() {
+            /**
+             * Generates the content block and set the datas on users input
+             */
+            sdk.setData({
+                textInput: this.textInput,
+            });
+            sdk.setContent(this.generateContent());
+        }
+    },
+    beforeMount(){
+      var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+    },
+  	mounted () {
+        var self=this;
+            sdk.getData(function (data) {
+            if (data.textInput !== undefined) {
+                self.textInput = data.textInput
+                self.$refs["text"] = self.textInput;
+            }
+            sdk.setContent(self.generateContent());
+        });
+    }
 }
 </script>
+
 
 <style>
 .container {

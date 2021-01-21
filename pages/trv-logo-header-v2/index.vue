@@ -66,16 +66,6 @@
 <script>
 import BlockSDK from "blocksdk";
 export default {
-  // template: `
-  //     <mjml>
-  //     <mjml-body>
-  //         <mj-section>
-  //         <mj-column>
-  //             <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Hello This is Header Logo V2</mj-text>
-  //         </mj-column>
-  //         </mj-section>
-  //     </mjml-body>
-  //     </mjml>`,
   data() {
     return {
       content: "",
@@ -108,16 +98,15 @@ export default {
       sdk.setData({
         inputLogoUrl: this.inputLogoUrl,
         inputExitURL: this.inputExitURL,
-        checkboxCip: this.checkboxCip,
-        inputCIP: this.inputCIP,
-        inputCIPTC: this.inputCIPTC,
+        // checkboxCip: this.checkboxCip,
+        // inputCIP: this.inputCIP,
+        // inputCIPTC: this.inputCIPTC,
       });
       sdk.setContent(this.generateContent());
     },
   },
   mounted() {
-    // const sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
-    const sdk = new BlockSDK();
+    const sdk = new BlockSDK(["marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
     var self = this;
     sdk.getData(function (data) {
       if (data.inputLogoUrl !== undefined) {
@@ -127,14 +116,14 @@ export default {
         self.inputExitURL = data.inputExitURL;
         self.$refs["url"] = self.inputLogoUrl;
 
-        self.checkboxCip = data.checkboxCip;
-        self.$refs["check-cip"] = self.checkboxCip;
+        // self.checkboxCip = data.checkboxCip;
+        // self.$refs["check-cip"] = self.checkboxCip;
 
-        self.inputCIP = data.inputCIP;
-        self.$refs["inputCIP"] = self.inputCIP;
+        // self.inputCIP = data.inputCIP;
+        // self.$refs["inputCIP"] = self.inputCIP;
 
-        self.inputCIPTC = data.inputCIPTC;
-        self.$refs["inputCIPTC"] = self.inputCIPTC;
+        // self.inputCIPTC = data.inputCIPTC;
+        // self.$refs["inputCIPTC"] = self.inputCIPTC;
       }
       sdk.setContent(self.generateContent());
     });
