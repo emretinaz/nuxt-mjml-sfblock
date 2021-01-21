@@ -95,6 +95,7 @@ export default {
       /**
        * Generates the content block and set the datas on users input
        */
+      var sdk = new BlockSDK();
       sdk.setData({
         inputLogoUrl: this.inputLogoUrl,
         inputExitURL: this.inputExitURL,
@@ -106,7 +107,7 @@ export default {
     },
   },
   mounted() {
-    const sdk = new BlockSDK(["marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+    var sdk = new BlockSDK();
     var self = this;
     sdk.getData(function (data) {
       if (data.inputLogoUrl !== undefined) {
