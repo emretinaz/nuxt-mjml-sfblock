@@ -23,7 +23,6 @@
 </template>
 <script>
 import BlockSDK from "blocksdk";
-
 export default {
     data() {
         return {
@@ -74,7 +73,8 @@ export default {
             /**
              * Generates the content block and set the datas on users input
              */
-            var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+            // var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+            var sdk = new BlockSDK();
             sdk.setData({
                 textInput: this.textInput,
             });
@@ -82,7 +82,7 @@ export default {
         }
     },
   	mounted () {
-        var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+        var sdk = new BlockSDK();
         var self=this;
             sdk.getData(function (data) {
             if (data.textInput !== undefined) {
