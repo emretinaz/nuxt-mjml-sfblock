@@ -74,16 +74,15 @@ export default {
             /**
              * Generates the content block and set the datas on users input
              */
+            var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
             sdk.setData({
                 textInput: this.textInput,
             });
             sdk.setContent(this.generateContent());
         }
     },
-    beforeMount(){
-      var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
-    },
   	mounted () {
+        var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
         var self=this;
             sdk.getData(function (data) {
             if (data.textInput !== undefined) {
