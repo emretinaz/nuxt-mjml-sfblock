@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "blocksdk": "^1.3.0",
     "core-js": "^3.8.2",
     "nuxt": "^2.14.12"
   },
