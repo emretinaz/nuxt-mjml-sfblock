@@ -64,10 +64,7 @@
 </template>
 
 <script>
-// const BlockSDK = require('blocksdk');
 import BlockSDK from "blocksdk";
-
-
 export default {
   // template: `
   //     <mjml>
@@ -118,10 +115,9 @@ export default {
       sdk.setContent(this.generateContent());
     },
   },
-  beforeMount(){
-    let sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
-  },
   mounted() {
+    // const sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
+    const sdk = new BlockSDK();
     var self = this;
     sdk.getData(function (data) {
       if (data.inputLogoUrl !== undefined) {
