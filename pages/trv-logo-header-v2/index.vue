@@ -66,11 +66,8 @@
 <script>
 // const BlockSDK = require('blocksdk');
 import BlockSDK from "blocksdk";
-if (typeof(window) !== 'undefined') {
-   var timer = setTimeout(function() {
-      const sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
-    }, 200);
-}
+
+
 export default {
   // template: `
   //     <mjml>
@@ -122,6 +119,7 @@ export default {
     },
   },
   mounted() {
+    const sdk = new BlockSDK(["blocktester.herokuapp.com", "localhost", "marketingcloudapps.com", "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
     var self = this;
     sdk.getData(function (data) {
       if (data.inputLogoUrl !== undefined) {
