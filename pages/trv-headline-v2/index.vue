@@ -101,22 +101,22 @@ export default {
       <!-- End headline -->";
 
 
-    const { default: mjml2html, registerComponent } = require("mjml-web");
+    const mjml2html = require("mjml-web");
 
     // registerComponent(MyComponent)
-    const mjmloutputhtml = mjml2html(`<mjml>
-  <mj-body>
-    <mj-section>
-      <mj-column>
-        <mj-text>
-          <h1>
-            Hey Islam!
-          </h1>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>`);
+    const mjmloutputhtml = mjml2html(`
+  <mjml>
+    <mj-body>
+      <mj-section>
+        <mj-column>
+          <mj-text>
+            Hello World!
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-body>
+  </mjml>
+`);
     console.log(mjmloutputhtml);
     this.mjmloutput = mjmloutputhtml.html;
 
