@@ -121,8 +121,8 @@ export default {
     this.mjmloutput = mjmloutputhtml.html;
 
 
-      // this.content = style.concat(bodycontent);
-      this.content = mjmloutputhtml;
+      this.content = style.concat(bodycontent);
+      // this.content = mjmloutputhtml;
       return this.content;
     },
     getContent() {
