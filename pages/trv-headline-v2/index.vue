@@ -45,7 +45,8 @@
     <hr />
     <br />
     <div>
-      {{ this.datafromsdk }}
+      {{ this.datafromsdk1 }} <br> <br>
+{{ this.datafromsdk2 }} <br> <br>
     </div>
   </div>
 </template>
@@ -59,7 +60,8 @@ export default {
   data() {
     return {
       content: "",
-      datafromsdk: null,
+      datafromsdk1: null,
+      datafromsdk2: null,
       mjmloutput: null,
       textInput: "Find your ideal hotel",
     };
@@ -146,7 +148,8 @@ export default {
     var sdk = new BlockSDK();
     var self = this;
     sdk.getData(function (data) {
-      this.datafromsdk=data;
+      this.datafromsdk1=data[1];
+      this.datafromsdk2=data[2];
       if (data.textInput !== undefined) {
         self.textInput = data.textInput;
         self.$refs["text"] = self.textInput;
