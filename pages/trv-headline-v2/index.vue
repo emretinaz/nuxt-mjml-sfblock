@@ -42,12 +42,7 @@
       {{ this.mjmloutput }}
     </div>
     <br />
-    <hr />
-    <br />
-    <div>
-      {{ this.datafromsdk1 }} <br> <br>
-{{ this.datafromsdk2 }} <br> <br>
-    </div>
+  
   </div>
 </template>
 <script>
@@ -60,8 +55,6 @@ export default {
   data() {
     return {
       content: "",
-      datafromsdk1: null,
-      datafromsdk2: null,
       mjmloutput: null,
       textInput: "Find your ideal hotel",
     };
@@ -112,18 +105,18 @@ export default {
 
     // registerComponent(MyComponent)
     const mjmloutputhtml = mjml2html(`<mjml>
-  <mj-body>
-    <mj-section>
-      <mj-column>
-        <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
-          <h1>
-            ${this.textInput}
-          </h1>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>`);
+        <mj-body>
+          <mj-section>
+            <mj-column>
+              <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
+                <h1>
+                  ${this.textInput}
+                </h1>
+              </mj-text>
+            </mj-column>
+          </mj-section>
+        </mj-body>
+      </mjml>`);
     console.log(mjmloutputhtml);
     this.mjmloutput = mjmloutputhtml.html;
 
@@ -138,6 +131,9 @@ export default {
        */
       // var sdk = new BlockSDK(['blocktester.herokuapp.com', 'localhost', 'marketingcloudapps.com', "https://nuxt-mjml-sfblock.netlify.app/", "https://nuxt-mjml-sfblock.netlify.app/trv-logo-header-v2/"], true);
       var sdk = new BlockSDK();
+      sdk.getData( gata => {
+        console.log("Getcontent funtiion get data: ",gata);
+      } );
       sdk.setData({
         textInput: this.textInput,
       });
@@ -148,8 +144,7 @@ export default {
     var sdk = new BlockSDK();
     var self = this;
     sdk.getData(function (data) {
-      this.datafromsdk1=data[1];
-      this.datafromsdk2=data[2];
+      console.log("Mounted get data: ",data);
       if (data.textInput !== undefined) {
         self.textInput = data.textInput;
         self.$refs["text"] = self.textInput;
