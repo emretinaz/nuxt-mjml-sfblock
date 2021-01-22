@@ -105,18 +105,18 @@ export default {
 
     // registerComponent(MyComponent)
     const mjmloutputhtml = mjml2html(`<mjml>
-        <mj-body>
-          <mj-section>
-            <mj-column>
-              <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
-                <h1>
-                  ${this.textInput}
-                </h1>
-              </mj-text>
-            </mj-column>
-          </mj-section>
-        </mj-body>
-      </mjml>`);
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          <h1>
+            Hey Islam!
+          </h1>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>`);
     console.log(mjmloutputhtml);
     this.mjmloutput = mjmloutputhtml.html;
 
