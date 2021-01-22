@@ -107,27 +107,28 @@ export default {
     },
   },
   mounted() {
-    var sdk = new BlockSDK();
-    var self = this;
-    sdk.getData(function (data) {
-      if (data.inputLogoUrl !== undefined) {
-        self.inputLogoUrl = data.inputLogoUrl;
-        self.$refs["logo-list"] = self.inputLogoUrl;
+    this.getContent();
+    // var sdk = new BlockSDK();
+    // var self = this;
+    // sdk.getData(function (data) {
+    //   if (data.inputLogoUrl !== undefined) {
+    //     self.inputLogoUrl = data.inputLogoUrl;
+    //     self.$refs["logo-list"] = self.inputLogoUrl;
 
-        self.inputExitURL = data.inputExitURL;
-        self.$refs["url"] = self.inputLogoUrl;
+    //     self.inputExitURL = data.inputExitURL;
+    //     self.$refs["url"] = self.inputLogoUrl;
 
-        // self.checkboxCip = data.checkboxCip;
-        // self.$refs["check-cip"] = self.checkboxCip;
+    //     // self.checkboxCip = data.checkboxCip;
+    //     // self.$refs["check-cip"] = self.checkboxCip;
 
-        // self.inputCIP = data.inputCIP;
-        // self.$refs["inputCIP"] = self.inputCIP;
+    //     // self.inputCIP = data.inputCIP;
+    //     // self.$refs["inputCIP"] = self.inputCIP;
 
-        // self.inputCIPTC = data.inputCIPTC;
-        // self.$refs["inputCIPTC"] = self.inputCIPTC;
-      }
-      sdk.setContent(self.generateContent());
-    });
+    //     // self.inputCIPTC = data.inputCIPTC;
+    //     // self.$refs["inputCIPTC"] = self.inputCIPTC;
+    //   }
+    //   sdk.setContent(self.generateContent());
+    // });
   },
 };
 </script>
